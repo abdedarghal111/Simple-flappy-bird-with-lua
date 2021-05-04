@@ -1,8 +1,8 @@
 function love.load()
-  local file = require"smod/coroutine"
-  function pepe(e)print(e) end
-  local e = file:new("test.lua"):update()
+  assert(loadfile(love.filesystem.getSource().."core.lua"))()
+  local t = function()for i = 1,100 do print(i)wait()end end
+  add(t)
 end
 function love.draw()
-
+  update()
 end
