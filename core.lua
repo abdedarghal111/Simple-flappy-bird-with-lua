@@ -10,7 +10,7 @@ end
 
 function _G.wait(n)
   if n then local time = n + love.timer.getTime()
-    repeat coroutine.yield() until true
+    repeat coroutine.yield() until time < love.timer.getTime()
   else coroutine.yield()
   end
 end
