@@ -1,8 +1,9 @@
 function love.load()
   assert(loadfile(love.filesystem.getSource().."core.lua"))()
-  local t = function()for i = 1,100 do print(i)wait(1)end end
-  add(t)
+  cube = require"mod/ins/cube"
+  e = cube:new()
 end
 function love.draw()
+  e:draw()
   update()
 end
