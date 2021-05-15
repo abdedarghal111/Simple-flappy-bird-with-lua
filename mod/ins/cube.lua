@@ -1,5 +1,5 @@
 --instancia del cubo
---TODO hacer mover al render y mas cosas esenciales
+--TODO: hacer mover al render y mas cosas esenciales
 
 local render = require"smod/render"
 
@@ -9,9 +9,12 @@ local cube = {
   size = vector2.new(),
   rotation = 0,
   render = true,
+  LocInRen = null,
   color = {r = 255,g = 255,b = 255},
   mode = "fill"
 }
+function cube:setcolor(r,g,b)
+  self.color = {r or self.color.r,g or self.color.g,b or self.color.b}
 
 function cube:new(a,e,x,z)
   local t = {}
@@ -19,8 +22,11 @@ function cube:new(a,e,x,z)
     t[i] = v
   end
   t.position,t.size = vector2.new(a,e),vector2.new(x or 100,z or 100)
+  render.add(t)
   return t
 end
+
+--TODO: function cube:zindex()
 
 function cube:draw()
   if self.render then
