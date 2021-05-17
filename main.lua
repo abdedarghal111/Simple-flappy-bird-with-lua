@@ -1,8 +1,6 @@
 function love.load()
   assert(loadfile(love.filesystem.getSource().."core.lua"))()
-  cube = require"mod/ins/cube"
-  uno = cube:new()
-  --dos = cube:new(); dos:setcolor(100,100,100)
+  add("test.lua")
 end
 function love.draw()
   update()

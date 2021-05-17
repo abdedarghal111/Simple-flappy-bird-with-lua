@@ -1,7 +1,7 @@
 --encargado del render, la data la dan los modelos
 
 
---TODO: solucionar fallo o remodelar codigo
+--TODO: zindex change
 local render = {capas = {[0] = {}}}
 local idgen = require"mod/id"
 
@@ -9,8 +9,10 @@ function render.add(instance,zindex)
   if zindex then
     local id = idgen.createid()
     if render.capas[zindex] then
-      if not id.checktableid(render.capas[zindex],id) then
+      if not idgen.checktableid(render.capas[zindex],id) then
         render.capas[zindex][id] = instance
+        instance.zindex = zindex
+        instance.zindexid = id
       else
         render.add(instance,zindex)
       end
@@ -20,12 +22,23 @@ function render.add(instance,zindex)
     end
   else
     local id = idgen.createid()
-    if not id.checktableid(render.capas[0],id) then
+    if not idgen.checktableid(render.capas[0],id) then
         render.capas[0][id] = instance
+        instance.zindex = 0
+        instance.zindexid = id
     else
-      function render.add(instance,zindex)
+      render.add(instance,zindex)
     end
   end
+end
+
+function render.quitzindex(instance)
+  render.capas[instance.zindex][instance.zindexid] = nil
+end
+
+function render.changezindex(instance,newzindex)
+  render.quitzindex(instance)
+  render.add(instance,newzindex)
 end
 
 function render:update()
