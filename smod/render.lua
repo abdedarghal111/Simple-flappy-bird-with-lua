@@ -1,7 +1,5 @@
 --encargado del render, la data la dan los modelos
 
-
---TODO: zindex change
 local render = {capas = {[0] = {}}}
 local idgen = require"mod/id"
 

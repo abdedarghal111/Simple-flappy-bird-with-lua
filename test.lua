@@ -3,12 +3,12 @@ uno = cube:new() uno.position = vector2.new(20,20)
 dos = cube:new(); dos:setcolor(100,100,100)
 
 while true do
-  wait(0.5)
-  print("changed")
-  uno:newzindex(2)
-  dos:newzindex(1)
-  wait(0.5)
-  print("changed2")
-  uno:newzindex(1)
-  dos:newzindex(2)
+  for i = 0,1,0.01 do
+    wait()
+    uno.transparency = i
+  end
+  for i = 1,0,-0.01 do
+    wait()
+    uno.transparency = i
+  end
 end
