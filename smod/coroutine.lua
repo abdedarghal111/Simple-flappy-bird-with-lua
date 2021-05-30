@@ -16,11 +16,21 @@ end
 function coreinst:new(content,...)
   local t = {}; for i,v in pairs(coreinst) do t[i] = v end
   if type(content) == "function" then t.args = ...
-    t.coroutine = coroutine.create(content,args)
+    t.coroutine = coroutine.create(function(...)
+      local sucess, err = pcall(content,...)
+      if not sucess then
+        print(sucess,err)
+      end
+    end)
   elseif type(content) == "string" then
     local sucess,err = loadfile(love.filesystem.getSource()..content)
     if not sucess then error("\n\n\n something get wrong:\n\n >>>>"..err) end
-    t.coroutine = coroutine.create(sucess)
+    t.coroutine = coroutine.create(function()
+      local sucess, err = pcall(sucess)
+      if not sucess then
+        print(sucess,err)
+      end
+    end)
   end
   return t
 end
