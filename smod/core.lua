@@ -26,3 +26,4 @@ function _G.update()
 end
 
 coroutina:new("smod/Vector2.lua"):update()
+_G.cube = require"mod/ins/cube"

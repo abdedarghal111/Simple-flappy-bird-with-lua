@@ -1,52 +1,27 @@
-cube = require"mod/ins/cube"
+local bird = require("gmod/bird")
+local bo = bird.object
+local colors = require"mod/colors"
 local x,y = love.graphics.getDimensions()
-uno = cube:new()
-dos = cube:new(); dos:setcolor(100,100,100)
+local playing = true
+
+--start things
+local particles_settings = add("mod/particles.lua")
+
+--starting settings
+local r,g,b = unpack(colors.black)love.graphics.setBackgroundColor(r/255,g/255,b/255)
 
 add(function()
-        coroutine.yield(20)
-        local e = "a" + 5
-      end)
-
---[[
-uno.position = vector2.new(x-uno.size.x,y/2-(uno.size.y/2))
-dos.position = vector2.new(0,y/2-(dos.size.y/2))
-
-local colisions = {uno,dos}
-
-add(function()
-  while wait() do
-    uno.position = vector2.new(uno.position.x - 100*dt,uno.position.y)
-    dos.position = vector2.new(dos.position.x + 100*dt,dos.position.y)
-  end
-end)
-
-print(table.unpack({
-x0y0 = "pepe",--instance.position.x,
-x1y0 = "pepa",--instance.position.x,
-x0y1 = "jose",
-x1y1 = "hola"
-}))
-
-local function getcolisionpoints()
-  return unpack({
-  x0y0 = "pepe",--instance.position.x,
-  x1y0 = "pepa",--instance.position.x,
-  x0y1 = "jose",
-  x1y1 = "hola"
-})
-end
-print(getcolisionpoints())
-
-
---[[
-add(function()
-  while wait() do
-    for i,v in colisions() do
-      for e,u in colisions() do
-
-      end
+    while true do
+    if playing then
+      bird.velocity.y = bird.velocity.y - 300
     end
+    wait(0.5)
   end
 end)
-]]
+while true do
+  wait()
+  if playing then
+    bo.position = bo.position + bird.velocity * dt
+    bird.velocity.y = bird.velocity.y + bird.mass * bird.gravity * dt
+  end
+end

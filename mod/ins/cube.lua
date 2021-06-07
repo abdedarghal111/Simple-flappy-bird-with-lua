@@ -23,7 +23,7 @@ function cube:setcolor(r,g,b)
   self.color.b = b or self.color.b
 end
 
-function cube:new(a,e,x,z,r,g,b)
+function cube:new(x,z,a,e,r,g,b)
   local t = {}
   for i,v in pairs(cube) do
     t[i] = v

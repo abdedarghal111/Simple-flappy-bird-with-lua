@@ -28,8 +28,12 @@ vector2.mt = {
     return error("\n -->(programmer):This vector2 value doesn't exist")
   end,
   --en caso de querer da un valor al vector2 te devolvera un error
-  __newindex = function(args)
-    error("\n -->(programmer):You can't add things to a vector2")
+  __newindex = function(self,parent,newindex)
+    if newindex.class == "vector2" then
+      self.x,self.y = newindex.x,newindex.y
+    else
+      error("\n -->(programmer):You can't add things to a vector2")
+    end
   end,
   --en caso de sumar vectores
   __add = function(v1,v2)
@@ -48,7 +52,7 @@ vector2.mt = {
   --en caso de multiplicar vectores por un numero
   __mul = function(v1,v2)
     local a = vector2.new()
-    a.x = v1.x * v2.x
+    a.x = v1.x * v2
     a.y = v1.y * v2
     return a
   end,
