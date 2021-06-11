@@ -1,7 +1,7 @@
 local colors = require"mod/colors"
 local parts = {}
 local settings = {
-  canwork = true
+  work = true
 }
 local x,y = love.graphics:getDimensions()
 math.randomseed(os.time())
@@ -15,16 +15,20 @@ for i = 1,15 do
 end
 
 add(function()
-  while settings.canwork and wait() do
-    for i,v in pairs(parts) do
-      local y = v[2]
-      local v = v[1]
-      v.position = vector2.new(v.position.x - y*dt,v.position.y)
-      if v.position.x <= 0 - v.size.x then
-        v.position.x = x
+  while wait() do
+    if settings.work then
+      for i,v in pairs(parts) do
+        local y = v[2]
+        local v = v[1]
+        v.position = vector2.new(v.position.x - y*dt,v.position.y)
+        if v.position.x <= 0 - v.size.x then
+          v.position.x = x
+        end
       end
     end
   end
 end)
 
-return settings
+return function(option,value)
+  settings[option] = value
+end

@@ -1,6 +1,6 @@
 function love.load()
   assert(loadfile(love.filesystem.getSource().."smod/core.lua"))()
-  add("test.lua")
+  add("game.lua")
 end
 function love.draw()
   update()

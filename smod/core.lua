@@ -1,5 +1,5 @@
 --este es el archivo ocupado de la base del proyecto, aqui empieza
---TODO: reforzar deteccion de errores
+
 local coroutina = require"smod/coroutine"
 local render = require"smod/render"
 local core = {}
