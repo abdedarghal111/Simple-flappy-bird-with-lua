@@ -1,5 +1,4 @@
 --instancia del cubo
---TODO: hacer mover al render y mas cosas esenciales
 
 local render = require"smod/render"
 local transparency = require"mod/shaders/transparency"

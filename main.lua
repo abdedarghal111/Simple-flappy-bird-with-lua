@@ -4,6 +4,7 @@ function love.load()
 end
 function love.draw()
   update()
+  love.graphics.setFont(love.graphics.newFont(20))
   love.graphics.setColor(1,1,1,1)
   love.graphics.print(love.timer.getFPS())
 end
