@@ -12,6 +12,7 @@ for i = 1,15 do
   local y = math.random(0,y)
   parts[i] = {cube:new(size,size,x,y,unpack(colors.black_1)),math.random(1,100*100)/100}
   parts[i][1].transparency = 0.5
+  parts[i][1]:newzindex(-100)
 end
 
 add(function()

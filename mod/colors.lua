@@ -7,3 +7,9 @@ colors = {
 }
 
 return colors
+--[[
+222831
+393E46
+00ADB5
+EEEEEE
+]]

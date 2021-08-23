@@ -7,19 +7,19 @@
 
 
 --add("mod/font.lua")
-cube:new(100,100,100,100,255,255,255)
-local text = require"mod/ins/text"
-local text = text:new()
-text:setfont("1",20)
-text.text = "nose"
-text.position = vector2.new(100,100)
-text:setcolor(0,0,0)
-text.size = vector2.new(100,100)
+local x,y = love.graphics.getDimensions()
+local colors = require"mod/colors"
+local play = gui:new(x/18*4,y/18*4,x/18*7,y/18*1)
+local play = gui:new(x/18*4,y/18*4,x/18*7,y/18*7)
+local play = gui:new(x/18*4,y/18*4,x/18*7,y/18*13)
+play.backgroundcolor = {unpack(colors.white)}
+play.textcolor = {unpack(colors.black)}
+play.bordercolor = {unpack(colors.blue)}
+play:aplycolors()
+play:newzindex(10)
+play.objects.texto.text = "play"
 
---gui:new(300,300,200,200)
-
-
-
+play:mouseclick(function() print("clicked") end)
 
 
 
