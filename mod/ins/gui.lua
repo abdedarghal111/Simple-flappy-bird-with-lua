@@ -12,6 +12,10 @@ local gui = {
   textcolor = {0,0,0},
   backgroundcolor = {0,0,0},
   mouseclickactivate = false,
+  mousehoveron_ = false,
+  mousehoveronactivate = false,
+  mousehoveroff_ = true,
+  mousehoveroffactivate = false,
   objects = {}
 }
 
@@ -42,7 +46,7 @@ function gui:newzindex(zindex)
   self.objects.texto:newzindex(zindex + 1)
 end
 
-function gui:mouseclick(funcion)
+function gui:mouseclick(cosas)
   self.mouseclickactivate = true
   add(function()
     while wait() do
@@ -53,7 +57,7 @@ function gui:mouseclick(funcion)
       if love.mouse.isDown(1) then
         if  x > self.position.x and x < (self.position.x + self.size.x)
         and y > self.position.y and y < (self.position.y + self.position.x) then
-          funcion()
+          cosas()
         end
       end
     end
@@ -61,6 +65,54 @@ function gui:mouseclick(funcion)
 end
 
 function gui:mouseclickdisconnect()
+  self.mouseclickactivate = false
+end
+
+function gui:mousehoveron(cosas)
+  self.mousehoveronnactivate = true
+  add(function()
+    while wait() do
+      if self.mousehoveronnactivate == false then
+        break
+      end
+      if self.mousehoveroff_ then
+        local x,y = love.mouse.getX(),love.mouse.getY()
+        if  x > self.position.x and x < (self.position.x + self.size.x)
+        and y > self.position.y and y < (self.position.y + self.size.y) then
+          self.mousehoveroff_ = false
+          self.mousehoveron_ = true
+          cosas()
+        end
+      end
+    end
+  end)
+end
+
+function gui:mousehoverondisconnect()
+  self.mouseclickactivate = false
+end
+
+function gui:mousehoveroff(cosas)
+  self.mousehoveroffactivate = true
+  add(function()
+    while wait() do
+      if self.mousehoveroffactivate == false then
+        break
+      end
+      if self.mousehoveron_ then
+        local x,y = love.mouse.getX(),love.mouse.getY()
+        if  not (x > self.position.x and x < (self.position.x + self.size.x)
+        and y > self.position.y and y < (self.position.y + self.size.y)) then
+          self.mousehoveroff_ = true
+          self.mousehoveron_ = false
+          cosas()
+        end
+      end
+    end
+  end)
+end
+
+function gui:mousehoveroffdisconnect()
   self.mouseclickactivate = false
 end
 
