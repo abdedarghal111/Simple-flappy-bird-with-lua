@@ -3,10 +3,6 @@
 --TODO: gui system
 
 --arranque
-
-
-
---add("mod/font.lua")
 local x,y = love.graphics.getDimensions()
 local colors = require"mod/colors"
 local guis = {
@@ -14,6 +10,16 @@ local guis = {
   options = gui:new(x/18*4,y/18*4,x/18*7,y/18*7),
   exit = gui:new(x/18*4,y/18*4,x/18*7,y/18*13)
 }
+local cubo = cube:new(100,100,100,100)
+cubo:newzindex(100)
+local tween1 = tween:create(
+  cubo,
+  "lineal",
+  "in",
+  5,
+  "position",
+  vector2.new(500,100))
+tween1:play()
 
 for i,v in pairs(guis) do
   v.backgroundcolor = {unpack(colors.white)}

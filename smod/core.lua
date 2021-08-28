@@ -29,3 +29,4 @@ coroutina:new("smod/Vector2.lua"):update()
 _G.cube = require"mod/ins/cube"
 _G.gui = require"mod/ins/gui"
 _G.text = require"mod/ins/text"
+_G.tween = require"smod/tween"
