@@ -37,6 +37,28 @@ function gui:aplycolors()
   self.objects.texto:setcolor(unpack(self.textcolor))
 end
 
+function gui:aplyposition()
+  local x,y = self.size.x,self.size.y
+  local xx,yy = self.position.x,self.position.y
+  local s = x*0.1
+
+  self.objects.arriba.position = vector2.new(xx,yy)
+  self.objects.abajo.position = vector2.new(xx,yy+y-s)
+  self.objects.derecha.position = vector2.new(xx+x-s,yy+s)
+  self.objects.izquierda.position = vector2.new(xx,yy+s)
+  self.objects.fondo.position = vector2.new(xx+s,yy+s)
+  self.objects.texto.position = vector2.new(xx+s,yy+s)
+end
+
+function gui:aplyrender()
+  self.objects.arriba.render = self.render
+  self.objects.abajo.render = self.render
+  self.objects.derecha.render = self.render
+  self.objects.izquierda.render = self.render
+  self.objects.fondo.render = self.render
+  self.objects.texto.render = self.render
+end
+
 function gui:newzindex(zindex)
   self.objects.arriba:newzindex(zindex)
   self.objects.abajo:newzindex(zindex)

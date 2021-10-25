@@ -11,8 +11,10 @@ function _G.add(f,...)
 end
 
 function _G.wait(n)
+  local n = n
   if n then local time = n + love.timer.getTime()
     repeat coroutine.yield() until time < love.timer.getTime()
+    return true
   else coroutine.yield() return true
   end
 end
@@ -27,6 +29,8 @@ end
 
 coroutina:new("smod/Vector2.lua"):update()
 _G.cube = require"mod/ins/cube"
+_G.sound = require"mod/ins/sound"
 _G.gui = require"mod/ins/gui"
 _G.text = require"mod/ins/text"
 _G.tween = require"smod/tween"
+_G.destroy = require"mod/ins/destroy"
