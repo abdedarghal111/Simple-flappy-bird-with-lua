@@ -12,6 +12,15 @@ local config = {
   gravity = false
 }
 
+local mainmusic = sound:new("musica.wav")
+mainmusic.source:setVolume(0.1)
+mainmusic:play()
+add(function()
+  while wait(mainmusic.source:getDuration() + 0.01) do
+    mainmusic:play()
+  end
+end)
+
 local bestscore = text:new()
 local score = text:new()
 
@@ -59,6 +68,16 @@ guis.play:mouseclick(function()
   if not debounce then
     debounce = true
     game_start(guis,config)
+    debounce = false
+  end
+end)
+
+guis.options:mouseclick(function()
+  if not debounce then
+    debounce = true
+    guis.options.objects.texto.text = "No options."
+    wait(1)
+    guis.options.objects.texto.text = "options"
     debounce = false
   end
 end)

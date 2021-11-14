@@ -1,3 +1,4 @@
+--[[
 local bird = require("gmod/bird")
 local bo = bird.object
 local colors = require"mod/colors"
@@ -26,3 +27,4 @@ function() while wait() and game do
 end end)
 
 return score
+]]
