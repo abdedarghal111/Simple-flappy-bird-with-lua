@@ -1,8 +1,3 @@
-# Im-going-to-try-something #
+# Done flappy bird with lot of bugs. #
 
-I dont now, I think this is going to be other abandoned project, but is really small one.
-
----
-
-## I forgot what Im going to do xd. ##
-But I don't now, **I leave the progect for now**, but I don't now.
+I done it, I wasn't have time for made it good because I am with my studies. But it was a good experience.
