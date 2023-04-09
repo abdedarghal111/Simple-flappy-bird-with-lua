@@ -1,4 +1,8 @@
 function love.load()
+  local source = love.filesystem.getSource()
+  function love.filesystem.getSource()
+    return source.."/"
+  end
   assert(loadfile(love.filesystem.getSource().."smod/core.lua"))()
   add("game.lua")
 end
