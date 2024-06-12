@@ -17,7 +17,6 @@ If you want to test it, you can stup löve2d, it is really fast and you can test
 ## Features
 
 It has: 
-- timer
 - points
 - Dinamic background
 - Animated jumps
