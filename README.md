@@ -2,19 +2,19 @@
 
 This is a repository that I maded years ago when I was programming for fun.
 
-# Tools
+## Tools
 
 I used Lua programming language and Löve2D framework(opensource lua framework).
 
-# Observations
+## Observations
 
 I maded this project a long time ago, it has bugs and errors but everything there maded by **2021** me.
 
-# Setup
+## Setup
 
 If you want to test it, you can stup löve2d, it is really fast and you can test it easly.
 
-# Features
+## Features
 
 It has: 
 - timer
